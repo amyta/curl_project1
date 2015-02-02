@@ -3,11 +3,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class EletricityBillApp {
+public class ElectricityBillingApp {
 	public static void main(String[] args) {
 		// Declare variables
-		Scanner sc = new Scanner(System.in);
-		NumberFormat fmt = NumberFormat.getCurrencyInstance();
+		Scanner repeat = new Scanner(System.in);
+		String choice = "y";
+		while (!choice.equalsIgnoreCase("n")) {
+		
 		double rate = 0;
 		double overCharge = 1.10;
 		double excessCharge = 1.25;	
@@ -17,6 +19,11 @@ public class EletricityBillApp {
 		double excess;
 		double total;
 		
+		Scanner sc = new Scanner(System.in);
+		NumberFormat fmt = NumberFormat.getCurrencyInstance();
+		
+		System.out.println("\nSouthwest Power & Light\nBilling Statement\n");
+	
 		Date now = new Date(); // Get current date and time				
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		System.out.println("Date: " + sdf.format(now));
@@ -56,7 +63,7 @@ public class EletricityBillApp {
 			System.out.println("Date entered is not valid. Please try again.");
 		}	
 	} 
-	// Validate kwused input
+	// Validate KW Used input
 	Scanner sc3 = new Scanner(System.in);
 	String kwusedEntered = null;
 	double base;
@@ -71,7 +78,6 @@ public class EletricityBillApp {
 		Scanner sc4 = new Scanner(kwusedEntered);
 		int kwused = sc4.nextInt();
 	
-		System.out.println("\nSouthwest Power & Light\nBilling Statement");
 		System.out.println("\nName: " + name);
 		System.out.println("Meter reading date: " + billingDate);
 		System.out.println("Electricity Used (KW): " + kwusedEntered + "\n");
@@ -113,15 +119,17 @@ public class EletricityBillApp {
 			System.out.printf("%-25s %6s\n", "Baseline charge ", fmt.format(base));
 			System.out.printf("%-25s %6s\n", "Over-baseline charge ", fmt.format(over));
 			System.out.printf("%-25s %6s\n", "Excess charge ", fmt.format(excess));
-			System.out.printf("%-25s %7s\n", "\nTotal amount due: ", fmt.format(total));
+			System.out.printf("%-25s %7s\n", "\nTotal amount due: ", fmt.format(total)+ "\n");
 		}
-		sc4.close();
 		} catch (Exception e) {
 			System.out.println("Please enter only numeric values.");
-		} // End Try Catch for kw used
-		System.out.println("\nThank you for letting us serve you!");		
-		}
-	sc.close();
-	sc3.close();
+		} // End Try Catch for kw used		
+	}
+	System.out.println("Thank you for letting us serve you!\n");
+	System.out.print("Would you like to calculate another bill: (y/n) > ");
+	choice = repeat.next();
+	System.out.print("You've entered: " + choice + "\n");
+	}
+	System.out.println("\nThank you for using Southwest's Billing App.");
 	}
 }
