@@ -2,8 +2,10 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class ElectricityBillingApp {
+public class ElectricityBillingApp2 {
 	public static void main(String[] args) {
 		// Declare Scanner 1
 		Scanner repeat = new Scanner(System.in); // Scanner for Calculating another bill
